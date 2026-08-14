@@ -28,7 +28,7 @@ def session(request):
 #FLAW X fix: add @login_required as a decorator
 @csrf_exempt # FLAW 1 fix : delete this line
 def changeUsername(request): #FLAW 2 fix: remove session_id from arguments
-    changee = User.objects.get(username=request.POST['user']) #FLAW X fix: change the get() parameter to "username=request.user"
+    changee = User.objects.get(username=request.POST['user']) #FLAW 4 fix: change the get() parameter to "username=request.user"
     changee.username = request.POST['username']
     changee.save()
     print("username changed to:" + changee.username)
