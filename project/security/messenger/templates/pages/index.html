@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Messenger</title>
+    </head>
+
+
+    <body>
+		<h1>Messenger</h1>
+
+        <table>
+		<tr>
+		<th style="text-align:left">Username: <td>{{user.username}} 
+		</table>
+
+
+        <form action='logout/' method="POST">
+			{% csrf_token %}
+            <input type="submit" value="Logout"/>
+        </form>
+		
+        <h2>Your messages</h2>
+
+        <table>
+		{% for message in messages %}
+		<tr>
+		<td>
+		{{message.msg_text}}
+		<td>
+
+		{% endfor %}
+		</table>
+
+        <form id='change' action='/messenger/change/' method="POST"> <!-- FLAW 1 fix: add {% csrf_token %} where this comment is --> 
+            <span>Change username</span><br/>
+            <input type="text" name="username"/>
+            <input type="hidden" name="user" value="{{user.username}}"/> <!--FLAW X fix: delete this line-->
+            <input type="submit" value="change"/>
+        </form>
+    </body>
+
+
+    </body>
+</html>
