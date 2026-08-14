@@ -34,7 +34,7 @@
         <form id='change' action='/messenger/change/' method="POST"> <!-- FLAW 1 fix: add {% csrf_token %} where this comment is --> 
             <span>Change username</span><br/>
             <input type="text" name="username"/>
-            <input type="hidden" name="user" value="{{user.username}}"/> <!--FLAW X fix: delete this line-->
+            <input type="hidden" name="user" value="{{user.username}}"/> <!--FLAW 4 fix: delete this line-->
             <input type="submit" value="change"/>
         </form>
     </body>
